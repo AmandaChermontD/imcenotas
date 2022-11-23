@@ -1,46 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php
-    $nome = $_GET['nome'];
-    $peso = $_GET['peso'];
-    $altura = $_GET['altura'];
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>recebendo dados</title>
+        </head>
+    <body>
+
+<?php 
     
-    function imc($altura, $peso){
-    $altura = str_replace(',', '.', $altura);
-    $result = $peso/pow($altura, 2);
-    return $result;
+    //pegando os valores
+    $altura1 = $_POST["altura"];
+    $peso1 = $_POST["peso"];
     
-    }
+
+    //manipulando os dados
+    $peso = str_replace(",", ".", $peso1);
+
+    $altura = str_replace(",", ".", $altura1);
     
-    $dicionario = [
-        "17" => "Muito abaixo do peso",
-        "18.49" => "Abaixo do peso",
-        "24.99" => "Peso normal",
-        "29.99" => "Acima do peso",
-        "34.99" => "Obesidade I",
-        "39.99" => "Obesidade II (severa)",
-        "40.00" => "Obesidade III (mórbida)",
-    ];
-    
-    foreach($dicionario as $key => $value){
+    // echo "$peso <br>";
+    // echo $altura;
+
+    //calculando o IMC
+    $imc = $peso/($altura*$altura);
+
+    $situacao = "";
+
+
+    //definindo a situação da pessoa
+    if ($imc < 17){
+        $situacao = "Muito abaixo do peso";
         
-        if((float) $key < 40.0){
-                echo PHP_EOL."$value";
-                if($dicionario <= (float) $key){
-                break;
-            }
-        }else{ 
-            echo PHP_EOL."$value";
-        }
+    } elseif ($imc >= 17 && $imc < 18.5){
+        $situacao = "Abaixo do peso";
+
+    } elseif ($imc >= 18.5 && $imc < 25){
+        $situacao = "Peso normal";
+
+    } elseif ($imc >= 25 && $imc < 30){
+        $situacao = "Acima do peso";
+
+    } elseif ($imc >= 30 && $imc < 35){
+        $situacao = "Obesidade I";
+
+    } elseif ($imc >= 35 && $imc <= 40){
+        $situacao = "Obesidade II (severa)";
+        
+    } else {
+        $situacao =  "Obesidade III (mórbida)";
     }
+
+    echo "<h4>IMC: $imc </h4>";
+    echo "<h4>Situação: $situacao</h4>";
+    
+
     ?>
+
+    <a href="form_imc.php">voltar</a>
     
 </body>
 </html>
