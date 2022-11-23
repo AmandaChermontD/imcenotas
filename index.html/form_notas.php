@@ -23,13 +23,16 @@ print "Nota 1º Bim: " . $nota1 ."<br>";
 print "Nota 2º Bim: " . $nota2 ."<br>";
 print "Média: " . $media ."<br>";
 
-if($media<4)
- print "Reprovado";
-
- elseif($media>=6)
-   print "Aprovado";
-   elseif($media<=6)
-   print "Exame Final"
+ if ($media < 4){
+        echo "Reprovado";
+        
+    } elseif ($media >= 4 && $media < 6){
+        echo "Exame final";
+        
+    } else {
+        echo  "Aprovado";
+        
+    }
 
 
   
