@@ -58,7 +58,7 @@
 
     ?>
 
-    <a href="form_imc.php">voltar</a>
+ 
     
 </body>
 </html>
