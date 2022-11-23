@@ -7,13 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <form id="formulario" name="formulario" method="get" action="form_imc.php">
-        Nome Paciente: <input id="nome" name="nome" type="text" />
-            <br />
-        Altura: <input id="altura" name="altura" type=" str_replace" />
-            <br />
-        Peso: <input id="peso" name="peso" type=" str_replace" />
-            <br />
-            <input id="btnenviar" name="btnenviar" type="submit" value="Calcular IMC" />
+<center><fieldset>Cadastro
+   <br> <form action="resultadoIMC.php" method="post"><br>
+            <label for="Nome">Qual o seu peso?</label>
+            <input type="text" name="peso" id="nome1" required autofocus>
+<br><br>
+            <label for="nota">Qual a sua altura</label>
+            <input type="text" name="altura" placeholder="em metros" require>
+            
+<br><br>
+            <input type="submit" value="enviar" name="enviar"></center>
+    
 </body>
 </html>
